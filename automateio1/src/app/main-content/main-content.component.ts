@@ -41,5 +41,4 @@ export class MainContentComponent implements OnInit {
   loadNoteDB() {
     localStorage.setItem('noteDB', JSON.stringify(this.notesDATA));
   }
-
 }

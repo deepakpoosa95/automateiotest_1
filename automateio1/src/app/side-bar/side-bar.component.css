@@ -1,4 +1,15 @@
-custom {
+/* .card custom { */
  /* // background:#fbefc0; */
- background: red
+ /* background: red
+}
+.card {
+background-color: red;
+} */
+
+.normal{
+  background: white;
+}
+
+.highlight{
+  background:#fbefc0;
 }

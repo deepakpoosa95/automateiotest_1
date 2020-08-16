@@ -22,7 +22,7 @@ export class NoteDataServiceService {
   //   description: 'note3 description'
   // }];
 
-  notes2: any;
+  //notes2: any;
 
   constructor() { }
 

@@ -9,10 +9,19 @@ import { NoteDataServiceService } from '../services/note-data-service.service';
 export class SideBarComponent implements OnInit {
   notes: any;
   searchText: any = '';
+  selectedNote: any = {
+    title: '',
+    description: '',
+    time: ''
+  };
 
   constructor(private noteDataService: NoteDataServiceService) {
     this.noteDataService.searchNote.subscribe(searchText => {
       this.searchText = searchText;
+    });
+
+    this.noteDataService.clickedNote.subscribe(note => {
+      this.selectedNote.title = note.title;
     });
   }
 
