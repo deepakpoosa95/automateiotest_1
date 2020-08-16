@@ -1,0 +1,8 @@
+<div *ngFor="let note of notes | searchNote:searchText">
+  <div [ngClass]="(note.title == note.title) ? 'card card-body':'custom'" (click)="getNoteContent(note)">
+    <p>
+      <strong>{{note.title}}</strong>
+    </p>
+    <p>{{note.time | date:'shortTime'}} {{note.description | shorten}}</p>
+  </div>
+</div>
