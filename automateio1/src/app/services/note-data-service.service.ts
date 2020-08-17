@@ -8,20 +8,11 @@ export class NoteDataServiceService {
   clickedNote = new EventEmitter<any>();
   searchNote = new EventEmitter<any>();
   notes: any = [];
-
-  // notes: any = [{
-  //   title: 'note1',
-  //   description: 'note1 description'
-  // },
-  // {
-  //   title: 'note2',
-  //   description: 'note1 description2'
-  // },
-  // {
-  //   title: 'note3',
-  //   description: 'note3 description'
-  // }];
-
+  emptyNote = {
+    title: '',
+    description: '',
+    time: ''
+  };
 
   constructor() { }
 
@@ -33,7 +24,14 @@ export class NoteDataServiceService {
     return this.notes;
   }
 
-  updateNotes() {
+  updateNotes(note) {
+    this.notes.forEach((element, i) => {
+      if (element.description === note.description && element.title === note.title) {
+        element.title = note.title;
+        element.description = note.description;
+        element.time = new Date();
+      }
+    });
     localStorage.setItem('noteDB', JSON.stringify(this.notes));
   }
 
@@ -41,14 +39,14 @@ export class NoteDataServiceService {
     if (this.notes.length === 0) {
       this.notes.push({
         title: 'New Note',
-        description: 'No Description',
+        description: 'No Additional Description' + '#' + (this.notes.length + 1),
         time: new Date()
       });
     }
     else {
       this.notes.unshift({
         title: 'New Note',
-        description: 'No Description',
+        description: 'No Additional Description' + '#' + (this.notes.length + 1),
         time: new Date()
       });
     }
@@ -61,6 +59,7 @@ export class NoteDataServiceService {
         this.notes.splice(i, 1);
       }
     });
+    this.clickedNote.emit(this.emptyNote);
     localStorage.setItem('noteDB', JSON.stringify(this.notes));
   }
 }

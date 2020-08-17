@@ -31,8 +31,11 @@ export class MainContentComponent implements OnInit {
   constructor(private noteDataService: NoteDataServiceService) {
     this.noteDataService.clickedNote.subscribe(note => {
       this.note = note;
-      this.noteDataService.updateNotes();
     });
+  }
+
+  updateNotes(note){
+    this.noteDataService.updateNotes(note);
   }
 
   ngOnInit(): void {

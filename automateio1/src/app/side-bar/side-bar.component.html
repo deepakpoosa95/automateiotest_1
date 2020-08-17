@@ -1,7 +1,7 @@
 <div *ngFor="let note of notes | searchNote:searchText">
-  <div [ngClass]="(note.title == selectedNote.title) ? 'border highlight':'normal'" (click)="getNoteContent(note)">
+  <div [ngClass]="(note.description == selectedNote.description) ? 'border highlight':'normal'" (click)="getNoteContent(note)">
     <p class="m-0 pl-3 font-weight-bold">
-      {{note.title}}
+      {{note.title | shorten}}
     </p>
     <p class="m-0 pl-3">{{note.time | date:'shortTime'}} {{note.description | shorten}}</p>
   </div>

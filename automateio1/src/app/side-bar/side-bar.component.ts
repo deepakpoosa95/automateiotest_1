@@ -22,6 +22,8 @@ export class SideBarComponent implements OnInit {
 
     this.noteDataService.clickedNote.subscribe(note => {
       this.selectedNote.title = note.title;
+      this.selectedNote.description = note.description;
+      this.selectedNote.time = note.time;
     });
   }
 
